@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redcarpet-server-deployment
+spec:
+  selector:
+    matchLabels:
+      app: redcarpet-server
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: redcarpet-server
+    spec:
+      containers:
+        - name: redcarpet-server
+          image: docker.io/rnhori/redcarpet:latest
+          ports:
+            - containerPort: 8080
